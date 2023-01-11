@@ -1,44 +1,21 @@
 <nav class="bg-neutral-100 w-52 h-full border-r-2 border-slate-200">
   <ul>
-    <li>
+    <li *ngFor="let menu of menuItems">
       <a
-        [routerLink]="['/routePath']"
+        [routerLink]="menu.url"
         routerLinkActive="router-link-active"
         class="h-10 w-full flex items-center pl-5 border-b-2 border-slate-200 hover:bg-neutral-200"
-        >Forum</a
       >
-    </li>
-    <li>
-      <a
-        [routerLink]="['/routePath']"
-        routerLinkActive="router-link-active"
-        class="h-10 w-full flex items-center pl-5 border-b-2 border-slate-200 hover:bg-neutral-200"
-        >Forum</a
-      >
-    </li>
-    <li>
-      <a
-        [routerLink]="['/routePath']"
-        routerLinkActive="router-link-active"
-        class="h-10 w-full flex items-center pl-5 border-b-2 border-slate-200 hover:bg-neutral-200"
-        >Forum</a
-      >
-    </li>
-    <li>
-      <a
-        [routerLink]="['/routePath']"
-        routerLinkActive="router-link-active"
-        class="h-10 w-full flex items-center pl-5 border-b-2 border-slate-200 hover:bg-neutral-200"
-        >Forum</a
-      >
-    </li>
-    <li>
-      <a
-        [routerLink]="['/routePath']"
-        routerLinkActive="router-link-active"
-        class="h-10 w-full flex items-center pl-5 border-b-2 border-slate-200 hover:bg-neutral-200"
-        >Forum</a
-      >
+        <img class="mr-2" src="../../../assets/images/{{ menu.icon }}.png" />
+        {{ menu.text }}
+      </a>
+      <ul *ngIf="menu.children" class="py-4 border-b-2 border-slate-200">
+        <li *ngFor="let child of menu.children">
+          <a class="flex items-center pl-11 text-xs py-1">
+            {{ child.text }}
+          </a>
+        </li>
+      </ul>
     </li>
   </ul>
 </nav>
